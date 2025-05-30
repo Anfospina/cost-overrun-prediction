@@ -1,0 +1,43 @@
+﻿No;Factor de riesgo;Fuente;Media de Probabilidad;Desviacion P;Impacto Medio;Desviación I;Fase;retraso >30%;rango 1;rango 2;rango 3;rango 4
+1;Estudio de factibilidad deficiente;Directivo;3.28;1.21;3.95;1.02;Scope;;;;;
+2;Debilidad de la gestión de los contratistas;Directivo;3.05;1.05;4.28;0.76;;;;;;
+3;Mala comunicación entre las partes;Directivo;2.59;0.68;3.28;1.02;Design;Retraso;;;;
+4;Conflicto entre las partes del proyecto;Directivo;2.67;1.03;3.33;0.98;;;;;;
+5;Debilidad gerencial de los consultores;Directivo;2.9;0.97;3.82;0.82;Design;;;;;
+6;Aumento del precio de los materiales;Materiales y equipos;4.59;0.55;4.74;0.59;Construction;Retraso;;;;
+7;Escasez de equipos;Materiales y equipos;2.79;1.2;3.18;1.27;Construction;Retraso;;;;
+8;Retraso de los proveedores en la entrega de los equipos a la obra;Materiales y equipos;2.74;1.04;3.23;1.13;Construction;Retraso;;;;
+9;Escasez de materiales;Materiales y equipos;2.56;1.19;3.18;1.23;Construction;Retraso;;;;
+10;Nuevos problemas de equipos/tecnología;Materiales y equipos;2.23;1.2;2.69;1.19;;;;;;
+11;Falta de conocimiento y experiencia;Personal;2.74;0.88;3.28;1.02;Construction;;;;;
+12;Escasez de mano de obra;Personal;2.18;1.1;3.26;1.07;Construction;Retraso;;;;
+13;Falta de personal calificado (personal técnico) en el sitio;Personal;2.61;1.14;3.56;1.05;Construction;;Presupuesto;;;
+14;Tipo de cambio de divisas;Financiero;4.2;1.13;4.49;0.91;;;;;;Presupuesto
+15;Inflación;Financiero;4.69;0.52;4.85;0.36;;;;;Presupuesto;
+16;Escasez de fondos del propietario y retrasos en los pagos;Financiero;4.05;1.1;4.36;0.84;;;Presupuesto;;;
+17;Múltiples fuentes de fondos;Financiero;2.54;1;3.13;1.15;;;;;;
+18;Escasez de fondos para contratistas;Financiero;3.38;0.78;3.92;1.06;;;;;;Presupuesto
+19;Cambios adversos en las condiciones geológicas;Proyecto;2.1;1.14;3.08;1.26;;;;;;
+20;Restricciones del sitio;Proyecto;2.23;1.01;2.69;1.05;Scope;Retraso;Presupuesto;;Presupuesto;
+21;Complejidad del proyecto;Proyecto;2.51;1.05;3.2;1.15;Scope;Retraso;;;;
+22;Disponibilidad del sitio;Dueño;2.26;0.97;3;1.32;Scope;;;;;
+23;Órdenes de cambio durante la construcción;Dueño;3.44;1.16;3.77;0.96;Design;Retraso;;Presupuesto;;
+24;Retrasos en la toma de decisiones;Dueño;3.38;1.02;3.77;0.96;;;;Presupuesto;;
+25;Política aduanera del propietario y complejidad (demora en la contratación);Dueño;2.95;1.34;3.48;1.33;;;;;;Presupuesto
+26;Retrasos en la adquisición de tierras;Dueño;2.54;1.21;3.28;1.39;Scope;;;Presupuesto;;
+27;Suministro de servicios públicos;Dueño;4.08;0.84;2.13;1;Scope;Retraso;;;;
+28;Selección del postor más bajo;Dueño;3.67;1.11;3.74;1.12;;;;;;
+29;Falta de conocimiento y experiencia;Contratista;3.2;0.92;3.85;0.93;Construction;;;;;
+30;Retrasos en las adquisiciones;Contratista;2.85;0.84;3.54;0.91;;Retraso;;;;
+31;Retrasos de los subcontratistas en trabajos anteriores;Contratista;3.05;0.97;3.33;1.06;Construction;Retraso;;;;
+32;Gestión financiera inadecuada;Contratista;3.15;1.09;3.77;0.9;;;;;;
+33;Seguridad en el sitio;Contratista;2.979;1.22;3.38;1.39;Construction;;;;;
+34;Calidad de la construcción (defectos);Contratista;3.1;1.12;3.74;1.19;Construction;Retraso;;;;
+35;Mala planificación y programación;Contratista;3.28;1.19;3.97;0.9;Construction;Retraso;;;Presupuesto;
+36;Falta de conocimiento y experiencia;Consultor;2.74;1.09;3.67;1.08;Construction;;;;;
+37;Diseño incorrecto/errores de diseño;Consultor;2.95;1.02;3.79;1.13;Design;Retraso;;;;
+38;Retrasos en la entrega del diseño;Consultor;2.7;1.03;3.49;0.97;Design;Retraso;;;;
+39;Cambio de equipo, o especificacion de equipo, durante la construcción;Consultor;2.64;0.99;3.26;1.07;Construction;;;;;
+40;Mal tiempo o condición de emergencia;Medio ambiente;2.64;0.93;3.28;0.94;Construction;Retraso;;;;
+41;Bajas/lesiones inesperadas;Medio ambiente;1.77;1.01;2.36;1.33;;;;;;
+42;Ley de preservación del medio ambiente;Medio ambiente;1.46;0.82;1.92;1.18;;;;;;
