@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Predictor de Sobrecostos</title>
+
+  <style>
+    /* Variables CSS para consistencia de colores */
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #27ae60;
+      --danger-color: #e74c3c;
+      --background-color: #ecf0f1;
+      --card-background: #ffffff;
+      --text-primary: #2c3e50;
+      --text-secondary: #7f8c8d;
+      --border-color: #bdc3c7;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #8c9ce4 0%, #8868a8 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-background);
+      border-radius: 15px;
+      box-shadow: var(--shadow-hover);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .form-container {
+      padding: 40px 30px;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 25px;
+      background: var(--secondary-color);
+      margin-right: 15px;
+      border-radius: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .form-group input:hover,
+    .form-group select:hover {
+      border-color: var(--secondary-color);
+    }
+
+    .submit-button {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 18px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+    .result-container {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 12px;
+      text-align: center;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .result-title {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .prediction-result {
+      font-size: 3rem;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin: 15px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .result-description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        border-radius: 10px;
+      }
+      
+      .header {
+        padding: 30px 20px;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+      }
+      
+      .prediction-result {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Animaciones */
+    .form-group {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+    .form-group:nth-child(4) { animation-delay: 0.4s; }
+    .form-group:nth-child(5) { animation-delay: 0.5s; }
+    .form-group:nth-child(6) { animation-delay: 0.6s; }
+    .form-group:nth-child(7) { animation-delay: 0.7s; }
+    .form-group:nth-child(8) { animation-delay: 0.8s; }
+    .form-group:nth-child(9) { animation-delay: 0.9s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <h2 style="text-align: center; background-color: #343a40; color: white; padding: 40px; border-radius: 8px;">
+      Predictor de Sobrecostos de Proyectos
+    </h2>
+
+    <h3 style="text-align: center; color: #f0eded; margin: 20px 0;">
+      Ingrese los detalles del proyecto para estimar el sobrecosto:
+    </h3>
+  </header>
+
+  <form id='projectForm' method="POST" class="center-form">
+
+    <div class="single-column">
+      <!-- Todas las Variables en una sola sección -->
+      <div class="form-section">
+        <h3 style="color: #f0eded; margin-bottom: 20px;">Variables del Proyecto</h3>
+        
+        <!-- Variables Financieras -->
+        <div class="form-group">
+          <label for="gasto_fecha_estimado">Gasto a la Fecha Estimado ($):</label>
+          <input type="number" step="0.01" id="gasto_fecha_estimado" name="gasto_fecha_estimado" value="50000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="presupuesto_final_estimado">Presupuesto Final Estimado ($):</label>
+          <input type="number" step="0.01" id="presupuesto_final_estimado" name="presupuesto_final_estimado" value="100000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="presupuesto_proyecto">Presupuesto del Proyecto ($):</label>
+          <input type="number" step="0.01" id="presupuesto_proyecto" name="presupuesto_proyecto" value="95000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="desviacion_presupuestaria">Desviación Presupuestaria ($):</label>
+          <input type="number" step="0.01" id="desviacion_presupuestaria" name="desviacion_presupuestaria" value="5000" required>
+        </div>
+
+        <!-- Variables de Riesgo y Tiempo -->
+        <div class="form-group">
+          <label for="probabilidad">Probabilidad (0.0 - 1.0):</label>
+          <input type="number" step="0.01" min="0" max="1" id="probabilidad" name="probabilidad" value="0.7" required>
+        </div>
+
+        <div class="form-group">
+          <label for="impacto">Impacto (0.0 - 1.0):</label>
+          <input type="number" step="0.01" min="0" max="1" id="impacto" name="impacto" value="0.8" required>
+        </div>
+
+        <div class="form-group">
+          <label for="duracion_proyectada">Duración Proyectada (días):</label>
+          <input type="number" id="duracion_proyectada" name="duracion_proyectada" value="180" required>
+        </div>
+
+        <!-- Variables Categóricas -->
+        <div class="form-group">
+          <label for="tipo_proyecto">Tipo de Proyecto:</label>
+          <select id="tipo_proyecto" name="tipo_proyecto" required>
+            <option value="">Seleccione...</option>
+            <option value="Adecuaciones para Educación Inicial 3K">Adecuaciones para Educación Inicial 3K</option>
+            <option value="Adecuaciones para Educación Preescolar (Pre-K)">Adecuaciones para Educación Preescolar (Pre-K)</option>
+            <option value="Expansión de Capacidad Escolar">Expansión de Capacidad Escolar</option>
+            <option value="Instalación de Iluminación de Emergencia">Instalación de Iluminación de Emergencia</option>
+            <option value="Mejoras Asociadas a Programas Académicos (RESOA)">Mejoras Asociadas a Programas Académicos (RESOA)</option>
+            <option value="Mejoras en Sedes Arrendadas">Mejoras en Sedes Arrendadas</option>
+            <option value="Proyecto de Mejoramiento General (CIP)">Proyecto de Mejoramiento General (CIP)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fase_proyecto">Fase del Proyecto:</label>
+          <select id="fase_proyecto" name="fase_proyecto" required>
+            <option value="">Seleccione...</option>
+            <option value="CM,F&E">CM,F&E</option>
+            <option value="Design">Design</option>
+            <option value="Scope">Scope</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <input class="submit-button" type="submit" value="Predecir Sobrecosto">
+
+    {% if prediction is not none %}
+    <div class="center-text">
+      <h3>📈 Resultado de la Predicción</h3>
+      <p class="prediction-result">${{ prediction }}</p>
+      <p style="color: #666;">Sobrecosto estimado para el proyecto</p>
+    </div>
+    {% endif %}
+
+  </form>
+
+</body>
+
+</html>
